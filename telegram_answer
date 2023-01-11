@@ -1,0 +1,19 @@
+import telebot
+
+bot_token = 'xxxxxxx'
+bot = telebot.TeleBot(bot_token)
+
+# Handling updates from Telegram
+@bot.message_handler(commands=['start'])
+def start(message):
+    bot.send_message(message.chat.id, "Olá! digite /ajuda para mais informações.")
+
+@bot.message_handler(commands=['ajuda'])
+def help(message):
+    bot.send_message(message.chat.id, "Posso fornecer informações sobre XYZ. Digite /info para mais informações.")
+
+@bot.message_handler(commands=['info'])
+def info(message):
+    bot.send_message(message.chat.id, "Não sou o google, tchau!")
+
+bot.polling()
